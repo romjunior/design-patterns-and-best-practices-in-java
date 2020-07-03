@@ -67,83 +67,80 @@ Abstrações não devem depender de detalhes. Detalhes devem depender de abstra�
 
 ### Creational Patterns
 
-São padrões que lidam com a criação de objetos.
+São padrões que lidam com a criação de objetos. [link](https://github.com/romjunior/design-patterns-and-best-practices-in-java/tree/master/design-patterns/src/main/java/com/exemplo/creational)
 
 **Singleton**
 
-Somente uma única instância do objeto seja criada e utilizada. Solução simples seria esse [link1]. Mas se a execução for feita em um ambiente multi-threading então deveríamos proteger o trecho do código que cuida da construção do objeto pela primeira vez para evitar que ocorra a criação de mais de uma instância, usando ``synchronized`` [link2]. A utilização desse método para proteção tem custos de performance, se o singleton possuir uma lógica mais complexa podemos extrair o ``synchronized`` e utilizar a técnica do double-check [double-check], e por último a melhor implementação seria se não precisásemos criar locks e também se o singleton conseguisse continua thread-safe e isso pode ser feito pelo [Lock-free thread-safe](), nas verões mais novas da JVM essa seria a melhor alternativa, já que o carregamento de classes é feito somente quando realmente vai se utilizar(para versões antigas não é dessa maneira), isso se traduz nas versões eager/lady.
+Somente uma única instância do objeto seja criada e utilizada, ex: [Singleton](https://github.com/romjunior/design-patterns-and-best-practices-in-java/blob/master/design-patterns/src/main/java/com/exemplo/creational/singleton/Singleton.java). Mas se a execução for feita em um ambiente multi-threading então deveríamos proteger o trecho do código que cuida da construção do objeto pela primeira vez para evitar que ocorra a criação de mais de uma instância, usando ``synchronized`` ex: [SingletonSync](https://github.com/romjunior/design-patterns-and-best-practices-in-java/blob/fa86e1dd8cb9db9958405a547fe6172c7cac17a9/design-patterns/src/main/java/com/exemplo/creational/singleton/SingletonSync.java#L18). A utilização desse método para proteção tem custos de performance, se o singleton possuir uma lógica mais complexa podemos extrair o ``synchronized`` e utilizar a técnica do [double-check](https://github.com/romjunior/design-patterns-and-best-practices-in-java/blob/fa86e1dd8cb9db9958405a547fe6172c7cac17a9/design-patterns/src/main/java/com/exemplo/creational/singleton/SingletonSync.java#L27), e por último a melhor implementação seria se não precisásemos criar locks e também se o singleton conseguisse continua thread-safe e isso pode ser feito pelo [Lock-free thread-safe](https://github.com/romjunior/design-patterns-and-best-practices-in-java/blob/master/design-patterns/src/main/java/com/exemplo/creational/singleton/LockFreeSingleton.java), nas verões mais novas da JVM essa seria a melhor alternativa, já que o carregamento de classes é feito somente quando realmente vai se utilizar(para versões antigas não é dessa maneira), isso se traduz nas versões eager/lady.
 
-**Factory**
+**[Factory](https://github.com/romjunior/design-patterns-and-best-practices-in-java/tree/master/design-patterns/src/main/java/com/exemplo/creational/factory)**
 
 É usada para encapsular a lógica de instânciação de objetos que utilizam uma interface única. Novas classes podem ser adicionadas com o mínimo de mudanças
 
-Temos 4 tipos
+Temos 4 tipos:
+* Simple Factory
+* Method Factory
+* Anonymous Factory
+* Abstract Factory
 
-Simple Factory
-Method Factory
-Anonymous Factory
-Abstract Factory
-
-**Builder**
+**[Builder](https://github.com/romjunior/design-patterns-and-best-practices-in-java/tree/master/design-patterns/src/main/java/com/exemplo/creational/builder)**
 
 Usada quando precisamos construir um objeto complexo para diferentes objetos de estruturas e estados diferentes.
 
 ### Behavioral Patterns
 
-Padrões que lidam interação, comunicação e fluxo de controle. A maioria são baseados na composição, e delegação ao invés de herança.
+Padrões que lidam interação, comunicação e fluxo de controle. A maioria são baseados na composição, e delegação ao invés de herança. [Link](https://github.com/romjunior/design-patterns-and-best-practices-in-java/tree/master/design-patterns/src/main/java/com/exemplo/behavioral)
 
 
-**Cadeia de responsabilidade**
+**[Cadeia de responsabilidade](https://github.com/romjunior/design-patterns-and-best-practices-in-java/tree/master/design-patterns/src/main/java/com/exemplo/behavioral/chainofresponsability)**
 
 Encadeiam os handlers a ponto de eles processarem algo se for de sua responsabilidade, ou simplesmente passar pra frente(próximo handler).
 
-[Implementação]
-
 Aplicabilidade e Exemplos: Event handlers, Log handlers, Servlets
 
-**Observer**
+**[Observer](https://github.com/romjunior/design-patterns-and-best-practices-in-java/tree/master/design-patterns/src/main/java/com/exemplo/behavioral/observer)**
 
 Faz com que a mudança de estado seja observável para os objetos registrados serem informados.
 
-**Memento**
+**[Memento](https://github.com/romjunior/design-patterns-and-best-practices-in-java/tree/master/design-patterns/src/main/java/com/exemplo/behavioral/memento)**
 
 Usado para salvar o estado interno de um objeto sem quebrar o encapsulamento, restaurando o seu estado.
 
 Aplicabilidade: utilizado quando precisar de operações de rollback. Operações atômicas que devem voltar ao estado inicial caso uma das ações falhe.
 
-**Strategy**
+**[Strategy](https://github.com/romjunior/design-patterns-and-best-practices-in-java/tree/master/design-patterns/src/main/java/com/exemplo/behavioral/strategy)**
 
 Define uma família de algoritmos, encapsula cada um deles e os faz intercaláveis.
 
-**Template Method**
+**[Template Method](https://github.com/romjunior/design-patterns-and-best-practices-in-java/tree/master/design-patterns/src/main/java/com/exemplo/behavioral/templatemethod)**
 
 Evitar escrever código duplicado e focar no core
 
 ### Structural Patterns
 
-São feitos para criar estruturas complexas fazendo o uso de relações entre objetos e classes.
+São feitos para criar estruturas complexas fazendo o uso de relações entre objetos e classes. [Link](https://github.com/romjunior/design-patterns-and-best-practices-in-java/tree/master/design-patterns/src/main/java/com/exemplo/structural)
 
-**Adapter**
+**[Adapter](https://github.com/romjunior/design-patterns-and-best-practices-in-java/tree/master/design-patterns/src/main/java/com/exemplo/structural/adapter)**
 
 Objetivo é adaptar uma interface antiga para uma nova interface.
 
-**Proxy**
+**[Proxy](https://github.com/romjunior/design-patterns-and-best-practices-in-java/tree/master/design-patterns/src/main/java/com/exemplo/structural/proxy)**
 
 Fornece um substituto ou espaço reservado para outro objeto para controlar o acesso a ele.
 
-**Decorator**
+**[Decorator](https://github.com/romjunior/design-patterns-and-best-practices-in-java/tree/master/design-patterns/src/main/java/com/exemplo/structural/decorator)**
 
 Esse padrão diz que não podemos modificar as funcionalidades existentes, mas nós podemos estender. 
 Em outras palavras, esse padrão é aberto para estender, mas fechado para modificação.
 
-**Bridge**
+**[Bridge](https://github.com/romjunior/design-patterns-and-best-practices-in-java/tree/master/design-patterns/src/main/java/com/exemplo/structural/bridge)**
 
 Desacoplar a abstração da implementação permitindo assim que elas variem independentemente. 
 
-**Composite**
+**[Composite](https://github.com/romjunior/design-patterns-and-best-practices-in-java/tree/master/design-patterns/src/main/java/com/exemplo/structural/composite)**
 
 O Composite é um padrão de projeto estrutural que permite que você componha objetos em estruturas de árvores e então trabalhe com essas estruturas como se elas fossem objetos individuais.
 
-**Facade**
+**[Facade](https://github.com/romjunior/design-patterns-and-best-practices-in-java/tree/master/design-patterns/src/main/java/com/exemplo/structural/facade)**
 
 Provem uma interface unificada para sistemas complexos
