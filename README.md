@@ -145,7 +145,7 @@ O Composite é um padrão de projeto estrutural que permite que você componha o
 
 Provem uma interface unificada para sistemas complexos
 
-## Functional Programming
+## Programação Funcional
 
 Diferente do paradigma OOP, a construção de um programa é composto por funções ao invés de objetos. Isso é feito da maneira declarativa, por composição de funções, imutabilidade, e evitando *side-effects* em dados compartilhados.
 
@@ -308,4 +308,46 @@ São uma pipeline de funções que tranformam, não mutam, os dados. eles possue
   * allMatch()
   * noneMatch()
   * reduce()
+
+### Functional Design Patterns
+
+**MapReduce**
+
+Usado para programação paralela massiva, desenvolvida pela Google, é uma forma de Monad.
+
+Objetivo: Quebrar tasks e outras bem menores, executá-las em paralelo, e agregar o resultado(reduce).
+
+**Loan**
+
+Usado para liberar a aplicação de recursos que não serão mais utilizados. Geralmente são utilizados para liberar conexões de banco e etc.
+
+**Tail Call Optimization**
+
+Uma técnica utilizada por alguns compiladores para chamar uma função sem utilizar o *stack space*. Scala faz uso dessa técnica.
+
+**Memoization**
+
+Intenção é utilizar cache de funções puras para evitar o uso intensivo da CPU, assim tem mais rapidez e economizamos recurso.
+
+## Programação Reativa
+
+De acordo com o [Manifesto Reativo](https://www.reactivemanifesto.org/pt-BR), sistemas reativos possuem os seguintes atributos:
+* **Responsivo**: O sistema responde em um tempo hábil se possível.
+* **Resiliente**: O sistema continua respondendo em caso de falha.
+* **Elástico**: O sistema continua responsivo mesmo sob variações de demanda.
+* **Orientado a Mensagens**: Sistemas reativos usam passagem de mensagens assíncronas para estabelecer fronteiras entre componentes e garantir baixo acoplamento, isolamento, transparência na localização e provêem meios para delegar o tratamento de erros através de mensagens.
+
+Paradigma de programação reativa de baseia em stream de dados assíncronos(asynchronous data streams). Programação Reativa é aplicada usando algumas abstrações, algumas do mundo funcional:
+* Future/Promises: Uma maneira de agir nos valores que serão retornados em algum momento no futuro.
+* Stream: é uma *data pipeline*, "é o trilho do trem que da suporte para o trem passar".
+* Dataflow variables: esses são os resultados de funções aplicadas no stream.
+* Throttling: Mecanismo usado em ambientes *real-time processing*, para regular a velocidade de *input*. É utilizado *back-pressure* como estratégia.
+* Mecanismo de Push: Assim que a informação fica disponível a informação é passada(*pushed*) para os *Observers*, ao invés dos *Observers* ficarem consultando a fonte de dados(pull).
+
+### RxJava
+
+* Observables: Responsável por emitir os dados assim que disponível.
+  * Hot: começa a emitir assim que possível mesmo que não possuir Subscribers ligados.
+  * Cold: espera pelo menos um Subscriber se ligar antes de emitir dados. Também são chamados de *Connectable Observers* 
+* Observer: Responsável por reagir/consumir e/ou transformar os dados disponíveis.
 
