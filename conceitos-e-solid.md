@@ -71,8 +71,6 @@ A ideia é simplesmente não possui interfaces gordas, interfaces que possuam fu
 
 [Exemplo](solid/src/main/java/com/estudo/isp)
 
-Exemplo.
-
 ## Inversão de Dependência (D)
 
 Módulos de alto nível não devem depender de módulos de baixo nível. Os dois devem depender de abstrações.
